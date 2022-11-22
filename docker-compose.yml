@@ -1,0 +1,39 @@
+version: '3' # composeファイルのバーション指定
+services:
+  web: # service名
+    container_name: Server
+    build:  # ビルドに使用するDockerfileがあるディレクトリ指定
+      context: ./.docker/Nginx/.
+      dockerfile: Dockerfile
+    volumes:
+      - ./.docker/Nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
+      - ./.docker/Nginx/log:/var/log/nginx # マウントディレクトリ指定
+    networks:
+      - public
+    ports:
+      - 8082:80
+    depends_on:
+      - display
+  display:
+    container_name: next
+    build:  # ビルドに使用するDockerfileがあるディレクトリ指定
+      context: ./.docker/Next/.
+      dockerfile: Dockerfile
+    command: sh -c "yarn dev"
+    stdin_open: true
+    tty: true # コンテナの起動永続化
+    volumes:
+      -  .:/var/www/app  # マウントディレクトリ指定
+    networks:
+      - public
+    ports:
+      - "3020:4000"
+
+networks:
+  public:
+    driver: bridge
+
+volumes:
+  db-data:
+    name: mysql-volume
+    driver: local
