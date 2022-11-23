@@ -1,7 +1,7 @@
 # ベースとなるDockerイメージ指定
-FROM node:14.17.0
+FROM node:14.18.0
 
 # コンテナログイン時のディレクトリ指定
 WORKDIR /var/www/app
 
-EXPOSE 4000
+RUN curl --compressed -o- -L https://yarnpkg.com/install.sh | bash

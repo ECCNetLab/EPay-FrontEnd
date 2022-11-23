@@ -11,7 +11,7 @@ services:
     networks:
       - public
     ports:
-      - 8082:80
+      - "8082:80"
     depends_on:
       - display
   display:
@@ -19,6 +19,10 @@ services:
     build:  # ビルドに使用するDockerfileがあるディレクトリ指定
       context: ./.docker/Next/.
       dockerfile: Dockerfile
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - TZ=Asia/Tokyo
+    working_dir: /var/www/app
     command: sh -c "yarn dev"
     stdin_open: true
     tty: true # コンテナの起動永続化
@@ -26,14 +30,10 @@ services:
       -  .:/var/www/app  # マウントディレクトリ指定
     networks:
       - public
-    ports:
-      - "3020:4000"
+    expose:
+      - "4000"
+      - "6006"
 
 networks:
   public:
     driver: bridge
-
-volumes:
-  db-data:
-    name: mysql-volume
-    driver: local

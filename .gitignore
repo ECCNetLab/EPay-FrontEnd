@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/nextjs,node,webstorm,vim,visualstudio,visualstudiocode,nuxtjs
-# Edit at https://www.toptal.com/developers/gitignore?templates=nextjs,node,webstorm,vim,visualstudio,visualstudiocode,nuxtjs
+# Created by https://www.toptal.com/developers/gitignore/api/node,nextjs,react,storybookjs,webstorm,vim,visualstudiocode,visualstudio
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,nextjs,react,storybookjs,webstorm,vim,visualstudiocode,visualstudio
 
 ### NextJS ###
 # Dependencies
@@ -168,10 +168,24 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-### Nuxtjs ###
-# Nuxt build
+### react ###
+.DS_*
+**/*.backup.*
+**/*.back.*
 
-# Nuxt generate
+node_modules
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+### StorybookJs ###
+# gitignore template for the Storybook, UI guide for front apps
+# website: https://storybook.js.org/
+
+storybook-static/
 
 ### Vim ###
 # Swap
@@ -718,4 +732,4 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-# End of https://www.toptal.com/developers/gitignore/api/nextjs,node,webstorm,vim,visualstudio,visualstudiocode,nuxtjs
+# End of https://www.toptal.com/developers/gitignore/api/node,nextjs,react,storybookjs,webstorm,vim,visualstudiocode,visualstudio

@@ -1,7 +1,18 @@
-MYSQL_PASSWORD=root
-MYSQL_DATABASE=go_sample
+.PHONY: bash build install git
 
-.PHONY: mysql_cerate_db
+bash:
+	docker-compose exec display bash
 
-mysql_cerate_db:
-	docker-compose exec db mysql -u root --password=$(MYSQL_PASSWORD) -e "create database $(MYSQL_DATABASE)"
+build:
+	docker-compose up -d --build
+
+install:
+	 docker-compose run --rm api yarn install
+
+restart:
+	docker-compose restart apima
+
+git:
+	git add .
+	git commit -m "make file by command commit"
+	git push -u origin master

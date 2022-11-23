@@ -1,0 +1,7 @@
+const huskyConfig = {
+    hooks: {
+        'pre-commit': 'lint-staged',
+    },
+};
+
+module.exports = huskyConfig
